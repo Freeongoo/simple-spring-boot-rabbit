@@ -19,7 +19,9 @@ import java.util.UUID;
 
 @Configuration
 @EnableRabbit
-public class ConsumerConfig {
+public class RabbitConfig {
+
+    public static final String MY_QUEUE = "my-queue-";
 
     @Bean
     public String instanceId() {
@@ -28,12 +30,12 @@ public class ConsumerConfig {
 
     @Bean
     public FanoutExchange broadcastExchange() {
-        return new FanoutExchange("my-exchange");
+        return new FanoutExchange(ExchangeTopic.TOPIC);
     }
 
     @Bean
     public Queue instanceQueue(String instanceId) {
-        return new Queue("my-queue-" + instanceId, false);
+        return new Queue(MY_QUEUE + instanceId, false);
     }
 
     @Bean
@@ -45,7 +47,7 @@ public class ConsumerConfig {
     public SimpleMessageListenerContainer container(String instanceId, ConnectionFactory connectionFactory, MessageListenerAdapter listenerAdapter) {
         SimpleMessageListenerContainer container = new SimpleMessageListenerContainer();
         container.setConnectionFactory(connectionFactory);
-        container.setQueueNames("my-queue-" + instanceId);
+        container.setQueueNames(MY_QUEUE + instanceId);
         container.setMessageListener(listenerAdapter);
         return container;
     }

@@ -1,5 +1,6 @@
 package com.prod.rabbit.service;
 
+import com.prod.rabbit.config.ExchangeTopic;
 import com.prod.rabbit.dto.PriceExchange;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,6 @@ public class ProducerService {
     private RabbitTemplate template;
 
     public void broadcastMessage(PriceExchange priceExchange) {
-        this.template.convertAndSend("my-exchange", "", priceExchange);  // broadcasts string message to each my-queue-* via my-exchange
+        this.template.convertAndSend(ExchangeTopic.TOPIC, "", priceExchange);  // broadcasts string message to each my-queue-* via my-exchange
     }
 }
