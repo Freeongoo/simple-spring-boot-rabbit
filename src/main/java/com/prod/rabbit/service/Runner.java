@@ -22,7 +22,7 @@ public class Runner implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         PriceExchange price = new PriceExchange(appName, "BTC", "USDT", new BigDecimal("1110.2"));
-        log.info("Being send message: {}", price);
+        log.info(" !!! Being send message: {}", price);
         rabbitPriceSender.send(price);
     }
 }

@@ -12,6 +12,6 @@ public class RabbitMessageListener {
 
     @RabbitListener(queues = RabbitConfig.queueName)
     public void handle(PriceExchange priceExchange) {
-        log.info("Receive message: {}", priceExchange);
+        log.info(" !!! Receive message: {}", priceExchange);
     }
 }
