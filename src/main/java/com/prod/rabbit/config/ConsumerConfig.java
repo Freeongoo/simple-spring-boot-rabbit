@@ -33,7 +33,7 @@ public class ConsumerConfig {
 
     @Bean
     public Queue instanceQueue(String instanceId) {
-        return new Queue("my-queue-" + instanceId, true);
+        return new Queue("my-queue-" + instanceId, false);
     }
 
     @Bean
@@ -50,7 +50,7 @@ public class ConsumerConfig {
         return container;
     }
 
-    /*@Bean
+    @Bean
     public RabbitTemplate rabbitTemplate(ConnectionFactory connectionFactory, MessageConverter messageConverter) {
         RabbitTemplate rabbitTemplate = new RabbitTemplate(connectionFactory);
         rabbitTemplate.setMessageConverter(messageConverter);
@@ -60,5 +60,5 @@ public class ConsumerConfig {
     @Bean
     public MessageConverter messageConverter(ObjectMapper jsonMapper) {
         return new Jackson2JsonMessageConverter(jsonMapper);
-    }*/
+    }
 }
