@@ -1,5 +1,4 @@
 HELP.md
-target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
@@ -33,8 +32,10 @@ build/
 .vscode/
 /.mvn/
 
-dock/app1/target
-dock/app1/log
-dock/app2/target
-dock/app2/log
+
 /log/
+/dock/app1/log/*
+/dock/app1/target/*
+/dock/app2/log/*
+/dock/app2/target/*
+/target/
