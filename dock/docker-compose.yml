@@ -5,9 +5,9 @@ services:
     hostname: rabbit
     restart: always
     image: rabbitmq:management
-    ports:
-      - "5672:5672"
-      - "15672:15672"
+#    ports:
+#      - "9672:5672"
+#      - "13672:15672"
     environment:
       RABBITMQ_DEFAULT_USER: guest
       RABBITMQ_DEFAULT_PASS: guest
@@ -22,8 +22,8 @@ services:
     volumes:
       - ./app1/log:/app1/log
       - ./app1/resources:/app1/resources
-    ports:
-      - "8185:8185"
+#    ports:
+#      - "8185:8185"
     environment:
       SERVER_PORT: 8185
     networks:
@@ -36,8 +36,8 @@ services:
     volumes:
       - ./app2/log:/app2/log
       - ./app2/resources:/app2/resources
-    ports:
-      - "8184:8184"
+#    ports:
+#      - "8184:8184"
     environment:
       SERVER_PORT: 8184
     networks:
